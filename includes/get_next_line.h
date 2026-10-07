@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 13:48:06 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/06 15:59:55 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/07 14:21:55 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdio.h>
 # include "libft.h"
 
 char	*get_next_line(int fd);
