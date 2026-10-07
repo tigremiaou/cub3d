@@ -6,11 +6,11 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 13:48:17 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/07 14:20:30 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/07 14:20:46 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"e
+#include "get_next_line.h"
 
 static char	*append_buf(char *stash, char *buffer)
 {
