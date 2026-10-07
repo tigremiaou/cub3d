@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 14:37:11 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/07 14:25:52 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/07 14:49:57 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	main(int ac, char **av)
 {
 	(void)av;
-	if (ac != 1)
-		return (printf("wrong arguments\n"), 1);
+	if (ac != 2)
+		return (printf("Error\nWrong number of arguments\n"), 1);
+	
 	return (0);
 }
