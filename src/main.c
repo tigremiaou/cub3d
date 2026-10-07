@@ -6,11 +6,15 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 14:37:11 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/06 14:37:22 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/07 14:10:19 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "cubos.h"
+
 int	main(int ac, char **av)
 {
-	
+	if (ac != 1)
+		return (1);
+	return (0)
 }
