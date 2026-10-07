@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 15:59:31 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/07 15:57:42 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/07 21:37:47 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_player
 
 int		create_map(char **lines, t_map *map);
 int		parse_map(char **lines, t_map *map);
+void	free_lines(char **lines);
 char	**read_lines(char *path);
 
 #endif
