@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_map.c                                         :+:      :+:    :+:   */
+/*   read_lines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:20:15 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/07 15:45:22 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/08 16:45:54 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,13 @@ static int	count_lines(char *path)
 	if (fd < 0)
 		return (0);
 	count = 0;
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		free(line);
 		count++;
+		line = get_next_line(fd);
+
 	}
 	close(fd);
 	return (count);
@@ -34,7 +37,6 @@ static int	count_lines(char *path)
 char	**read_lines(char *path)
 {
 	char	**lines;
-	char	*line_gnl;
 	int		count;
 	int		fd;
 	int		i;
@@ -42,18 +44,16 @@ char	**read_lines(char *path)
 	i = 0;
 	count = count_lines(path);
 	if (!count)
-		return NULL;
+		return (NULL);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		return NULL;
+		return (NULL);
 	lines = malloc(sizeof(char *) * (count + 1));
 	if (!lines)
 		return (close(fd), NULL);
-	while ((line_gnl = get_next_line(fd)) != NULL)
-	{
-		lines[i] = line_gnl;
-		i++;
-	}
+	lines[i] = get_next_line(fd);
+	while (lines[i++] != NULL)
+		lines[i] = get_next_line(fd);
 	lines[i] = NULL;
 	close(fd);
 	return (lines);

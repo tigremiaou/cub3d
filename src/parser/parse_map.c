@@ -6,13 +6,18 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:52:38 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/07 15:57:32 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/08 17:59:27 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubos.h"
 
-int	parse_map(char **lines, t_map *map)
+int	parse_map(t_map *map)
 {
-	
+	int	i;
+
+	i = -1;
+	while (map->grid[++i])
+		printf("%s", map->grid[i]);
+	return (0);
 }

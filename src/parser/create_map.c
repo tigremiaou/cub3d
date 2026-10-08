@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:54:33 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/07 21:42:20 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/08 17:59:11 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ int	create_map(char **lines, t_map *map)
 
 	start = find_start(lines);
 	if (start == -1)
-		return (0);
+		return (1);
 	n_lines = 0;
 	while (lines[start + n_lines])
 		n_lines++;
 	map->grid = malloc(sizeof (char *) * (n_lines + 1));
 	if (!map->grid)
-		return (0);
+		return (1);
 	i = -1;
 	while (lines[start])
 	{
@@ -58,8 +58,5 @@ int	create_map(char **lines, t_map *map)
 		start++;
 	}
 	map->grid[n_lines] = NULL;
-	i = -1;
-	while(map->grid[++i])
-		printf("%s", map->grid[i]);
-	return (1);
+	return (0);
 }
