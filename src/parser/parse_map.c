@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:52:38 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/08 17:59:27 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/09 16:26:02 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ int	parse_map(t_map *map)
 
 	i = -1;
 	while (map->grid[++i])
-		printf("%s", map->grid[i]);
-	return (0);
+		printf("%s\n", map->grid[i]);
+	return (1);
 }

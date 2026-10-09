@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:20:15 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/08 16:45:54 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/09 16:19:26 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,20 @@ static int	count_lines(char *path)
 		free(line);
 		count++;
 		line = get_next_line(fd);
-
 	}
 	close(fd);
 	return (count);
+}
+
+static void	remove_newline(char *lines)
+{
+	int	len;
+
+	if (!lines)
+		return ;
+	len = ft_strlen(lines);
+	if (len > 0 && lines[len - 1] == '\n')
+		lines[len - 1] = '\0';
 }
 
 char	**read_lines(char *path)
@@ -52,9 +62,12 @@ char	**read_lines(char *path)
 	if (!lines)
 		return (close(fd), NULL);
 	lines[i] = get_next_line(fd);
-	while (lines[i++] != NULL)
+	while (lines[i] != NULL)
+	{
+		remove_newline(lines[i]);
+		i++;
 		lines[i] = get_next_line(fd);
-	lines[i] = NULL;
+	}
 	close(fd);
 	return (lines);
 }
