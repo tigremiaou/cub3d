@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:54:33 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/09 16:23:31 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/09 17:16:29 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	complete(t_map *map)
 
 	i = -1;
 	while (++i < 4)
-		if (!map->texture_path[i])
+		if (!map->texture_path[i] || !map->texture_path[i][0])
 			return (0);
 	i = -1;
 	while (++i < 3)
@@ -72,7 +72,7 @@ int	create_map(char **lines, t_map *map)
 	{
 		map->grid[++i] = ft_strdup(lines[start]);
 		if (!map->grid[i])
-			return (map->grid[i] = NULL, free_lines(map->grid), 1);
+			return (map->grid[i] = NULL, free_lines(map->grid), 0);
 		start++;
 	}
 	map->grid[n_lines] = NULL;

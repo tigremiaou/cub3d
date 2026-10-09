@@ -6,7 +6,7 @@
 #    By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/19 11:27:45 by nmeunier          #+#    #+#              #
-#    Updated: 2026/10/09 15:52:21 by nmeunier         ###   ########.fr        #
+#    Updated: 2026/10/09 16:58:56 by nmeunier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ LIBFT = src/libft/ft_lstadd_back.c src/libft/ft_lstadd_front.c src/libft/ft_lstd
 
 SRCS = $(GNL) $(LIBFT) src/main.c src/parser/read_lines.c \
 					   src/parser/create_map.c src/free/free.c src/parser/parse_map.c \
-					   src/parser/create_map_utils.c
+					   src/parser/create_map_utils.c src/parser/handle_map.c
 
 CC = cc
 RM = rm -f

@@ -6,13 +6,13 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 15:51:23 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/09 16:28:59 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/09 16:59:26 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubos.h"
 
-static int	match_id(char *line, char *id)
+int	match_id(char *line, char *id)
 {
 	int	len;
 
@@ -25,14 +25,29 @@ static int	match_id(char *line, char *id)
 		return (0);
 }
 
-static char	*skip_space(char *line, int len_id)
+char	*skip_space(char *line, int len_id)
 {
 	while (line[len_id] == ' ' || line[len_id] == '\t')
 		len_id++;
 	return (line + len_id);
 }
 
-static int	parse_color(char *str, int *dest)
+static int	is_number(char *str)
+{
+	int	i;
+
+	if (!str || !str[0])
+		return (0);
+	i = -1;
+	while (str[++i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+	}
+	return (1);
+}
+
+int	parse_color(char *str, int *dest)
 {
 	char	**rgb;
 	int		i;
@@ -43,28 +58,13 @@ static int	parse_color(char *str, int *dest)
 	i = 0;
 	while (i < 3 && rgb[i])
 	{
+		if (!is_number(rgb[i]))
+			return (free_lines(rgb), 0);
 		dest[i] = ft_atoi(rgb[i]);
 		i++;
 	}
 	free_lines(rgb);
-	return (1);
-}
-
-int	handle_id(char *lines, t_map *map)
-{
-	if (match_id(lines, "NO"))
-		map->texture_path[0] = ft_strdup(skip_space(lines, 2));
-	else if (match_id(lines, "SO"))
-		map->texture_path[1] = ft_strdup(skip_space(lines, 2));
-	else if (match_id(lines, "WE"))
-		map->texture_path[2] = ft_strdup(skip_space(lines, 2));
-	else if (match_id(lines, "EA"))
-		map->texture_path[3] = ft_strdup(skip_space(lines, 2));
-	else if (match_id(lines, "F"))
-		parse_color(skip_space(lines, 1), map->floor_color);
-	else if (match_id(lines, "C"))
-		parse_color(skip_space(lines, 1), map->ceiling_color);
-	else
+	if (i != 3)
 		return (0);
 	return (1);
 }
