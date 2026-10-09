@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:54:33 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/09 17:16:29 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/09 17:54:37 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	find_start(char **lines, t_map *map)
 		if (!handle_id((lines[i] + j), map))
 			return (i);
 	}
-	return (-1);
+	return (printf("Error\nNo valid map grid found\n"), -1);
 }
 
 static int	complete(t_map *map)
@@ -44,11 +44,11 @@ static int	complete(t_map *map)
 	i = -1;
 	while (++i < 4)
 		if (!map->texture_path[i] || !map->texture_path[i][0])
-			return (0);
+			return (printf("Error\nMissing texture\n"), 0);
 	i = -1;
 	while (++i < 3)
 		if (map->floor_color[i] < 0 || map->ceiling_color[i] < 0)
-			return (0);
+			return (printf("Error\nMissing parameters for colors\n"), 0);
 	return (1);
 }
 
@@ -66,13 +66,14 @@ int	create_map(char **lines, t_map *map)
 		n_lines++;
 	map->grid = malloc(sizeof (char *) * (n_lines + 1));
 	if (!map->grid)
-		return (0);
+		return (printf("Error\nMalloc failed\n"), 0);
 	i = -1;
 	while (lines[start])
 	{
 		map->grid[++i] = ft_strdup(lines[start]);
 		if (!map->grid[i])
-			return (map->grid[i] = NULL, free_lines(map->grid), 0);
+			return (printf("Error\nInitializing data went wrong\n"),
+				map->grid[i] = NULL, free_lines(map->grid), 0);
 		start++;
 	}
 	map->grid[n_lines] = NULL;

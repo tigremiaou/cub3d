@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 14:37:11 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/09 16:32:43 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/09 17:36:50 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ int	main(int ac, char **av)
 	lines = read_lines(av[1]);
 	if (!lines)
 		return (printf("Error\nInitializing lines\n"), 1);
-	if (!create_map(lines, &map) || !parse_map(&map))
-		return (printf("Error\nInitializing data went wrong\n"),
-			free_all(lines, &map), 1);
+	if (!create_map(lines, &map) || !valid_map(&map))
+		return (free_all(lines, &map), 1);
 	free_all(lines, &map);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/19 11:27:45 by nmeunier          #+#    #+#              #
-#    Updated: 2026/10/09 16:58:56 by nmeunier         ###   ########.fr        #
+#    Updated: 2026/10/09 17:32:21 by nmeunier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ LIBFT = src/libft/ft_lstadd_back.c src/libft/ft_lstadd_front.c src/libft/ft_lstd
 		src/libft/ft_calloc.c src/libft/ft_memcmp.c src/libft/ft_memcpy.c
 
 SRCS = $(GNL) $(LIBFT) src/main.c src/parser/read_lines.c \
-					   src/parser/create_map.c src/free/free.c src/parser/parse_map.c \
+					   src/parser/create_map.c src/free/free.c src/parser/valid_map.c \
 					   src/parser/create_map_utils.c src/parser/handle_map.c
 
 CC = cc
@@ -46,6 +46,7 @@ CNT := 0
 GREEN = \033[0;32m
 YELLOW = \033[0;33m
 CYAN = \033[0;36m
+BLUE = \033[0;34m
 RED = \033[0;31m
 BOLD = \033[1m
 RESET = \033[0m
@@ -60,13 +61,13 @@ $(NAME): $(OBJS)
 %.o: %.c
 	@$(eval CNT := $(shell expr $(CNT) + 1))
 	@$(CC) $(CFLAGS) -I$(INC_DIR) -I$(MLX_DIR) -O3 -c $< -o $@
-	@printf "\r\033[K$(CYAN)[%3d%%]$(RESET) Compiling $(YELLOW)%s$(RESET)" \
+	@printf "\r\033[K$(GREEN)[%3d%%]$(RESET) Compiling $(BLUE)%s$(RESET)" \
 		$$(( $(CNT) * 100 / $(TOTAL) )) "$<"
 
 clean:
 	@$(MAKE) --no-print-directory -C $(MLX_DIR) clean
 	@$(RM) $(OBJS)
-	@printf "$(YELLOW)> Object files cleaned.$(RESET)\n"
+	@printf "$(GREEN)> Object files cleaned.$(RESET)\n"
 
 fclean: clean
 	@$(RM) $(NAME)

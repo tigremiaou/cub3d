@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 15:59:31 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/09 17:02:20 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/09 18:07:44 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct s_map
 	char	direction_player;
 	char	*texture_path[4]; /*0=NO 1="SO" 2="WE" 3="EA"*/
 	int		floor_color[3];
+	int		start_x;
+	int		start_y;
 	char	**grid;
 }	t_map;
 
@@ -43,6 +45,6 @@ int		handle_id(char *line, t_map *map);
 int		match_id(char *line, char *id);
 void	free_lines(char **lines);
 char	**read_lines(char *path);
-int		parse_map(t_map *map);
+int		valid_map(t_map *map);
 
 #endif
