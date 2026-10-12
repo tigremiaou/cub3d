@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 21:35:19 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/09 16:40:09 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/10 03:45:23 by akkolitozer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,21 @@ void	free_all(char **lines, t_map *map)
 	while (map->grid[++i])
 		free(map->grid[i]);
 	free(map->grid);
+}
+
+void	free_map(t_map *map)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 4)
+	{
+		free(map->texture_path[i]);
+		map->texture_path[i] = NULL;
+	}
+	if (map->grid)
+	{
+		free_lines(map->grid);
+		map->grid = NULL;
+	}
 }

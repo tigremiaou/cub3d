@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/19 11:27:45 by nmeunier          #+#    #+#              #
-#    Updated: 2026/10/09 17:32:21 by nmeunier         ###   ########.fr        #
+#    Updated: 2026/10/12 02:30:06 by akkolitozer      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,11 @@ LIBFT = src/libft/ft_lstadd_back.c src/libft/ft_lstadd_front.c src/libft/ft_lstd
 		src/libft/ft_memmove.c src/libft/ft_memset.c src/libft/ft_substr.c \
 		src/libft/ft_calloc.c src/libft/ft_memcmp.c src/libft/ft_memcpy.c
 
-SRCS = $(GNL) $(LIBFT) src/main.c src/parser/read_lines.c \
-					   src/parser/create_map.c src/free/free.c src/parser/valid_map.c \
-					   src/parser/create_map_utils.c src/parser/handle_map.c
+SRCS = $(GNL) $(LIBFT) src/main.c src/parser/read_lines.c src/parser/create_map.c \
+						src/free/free.c src/parser/valid_map.c src/parser/create_map_utils.c \
+						src/parser/handle_map.c src/display/cleaner.c src/display/displayer.c \
+						src/parser/init_player.c src/raycast/map_utils.c \
+						src/raycast/raycaster.c \
 
 CC = cc
 RM = rm -f
