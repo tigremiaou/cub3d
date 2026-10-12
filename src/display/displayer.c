@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   displayer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 03:21:47 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/12 03:24:14 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/12 19:46:33 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void	columner(t_game *g, t_ray *r, int x)
 	int y;
 	int wall;
 
-	wall = 0xB0B0B0;
+	wall = 0x555555;
 	if (r->face == 1)
-		wall = 0x707070;
+		wall = 0xFFFFFF;
 	y = -1;
 	while (++y < WIN_H)
 	{

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+         #
+#    By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/19 11:27:45 by nmeunier          #+#    #+#              #
-#    Updated: 2026/10/12 02:30:06 by akkolitozer      ###   ########.fr        #
+#    Updated: 2026/10/12 17:41:40 by hulescur         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRCS = $(GNL) $(LIBFT) src/main.c src/parser/read_lines.c src/parser/create_map.
 
 CC = cc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -std=gnu17
 INC_DIR = includes
 MLX_DIR = src/mlx
 X11_LIB = -lXext -lX11 -lm -lz

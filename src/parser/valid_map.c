@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:52:38 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/09 18:52:33 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/12 19:45:04 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ static int	is_valid_char(char c)
 			&& c != '0'
 			&& c != '1'
 			&& c != ' ')
-			return (0);
-	return (1);
+			return (1);
+	return (0);
 }
 
 static int	check_char(t_map *map, int i, int j, int *count)
 {
 	
-	if (!is_valid_char(map->grid[i][j]))
-			return(printf("Error\nInvalid character in map\n"), 0);
+	if (is_valid_char(map->grid[i][j]))
+			return(ft_putendl_fd("Error\nInvalid character in map", 2), 1);
 		if (map->grid[i][j] == 'N' || map->grid[i][j] == 'S'
 			|| map->grid[i][j] == 'E' || map->grid[i][j] == 'W')
 		{
@@ -38,7 +38,7 @@ static int	check_char(t_map *map, int i, int j, int *count)
 			map->start_y = i;
 			map->direction_player = map->grid[i][j];
 		}
-	return (1);
+	return (0);
 }
 
 int	find_player(t_map *map)
@@ -54,18 +54,18 @@ int	find_player(t_map *map)
 		j = -1;
 		while (map->grid[i][++j])
 		{
-			if (!check_char(map, i, j, &count))
-				return (0);
+			if (check_char(map, i, j, &count))
+				return (1);
 		}
 	}
 	if (count != 1)
-		return (printf("Error\nInvalid number of player(s) in the map\n"), 0);
-	return (1);
+		return (ft_putendl_fd("Error\nInvalid number of player(s) in the map", 2), 1);
+	return (0);
 }
 
 int	valid_map(t_map *map)
 {
-	if (!find_player(map))
+	if (find_player(map))
 		return (0);
 	return (1);
 }

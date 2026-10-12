@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubos.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 15:59:31 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/12 03:29:18 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/12 17:55:49 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_map
 	char	direction_player;
 	char	*texture_path[4]; /*0=NO 1="SO" 2="WE" 3="EA"*/
 	int		floor_color[3];
+	int		count_texture;
 	int		start_x;
 	int		start_y;
 	char	**grid;

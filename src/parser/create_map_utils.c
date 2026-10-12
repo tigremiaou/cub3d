@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 15:51:23 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/09 16:59:26 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/12 19:23:44 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,19 @@ int	parse_color(char *str, int *dest)
 	int		i;
 
 	rgb = ft_split(str, ',');
+	i = -1;
 	if (!rgb)
-		return (0);
+		return (1);
 	i = 0;
 	while (i < 3 && rgb[i])
 	{
 		if (!is_number(rgb[i]))
-			return (free_lines(rgb), 0);
+			return (free_lines(rgb), 1);
 		dest[i] = ft_atoi(rgb[i]);
 		i++;
 	}
 	free_lines(rgb);
 	if (i != 3)
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
