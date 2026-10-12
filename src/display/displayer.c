@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 03:21:47 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/12 19:46:33 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/12 19:58:43 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	init_mlx(t_game *g)
 
 void	columner(t_game *g, t_ray *r, int x)
 {
-	int y;
-	int wall;
+	int	y;
+	int	wall;
 
 	wall = 0x555555;
 	if (r->face == 1)
@@ -65,7 +65,7 @@ int	render(t_game *g)
 {
 	t_ray	r;
 	int		x;
-	
+
 	x = -1;
 	while (++x < WIN_W)
 	{

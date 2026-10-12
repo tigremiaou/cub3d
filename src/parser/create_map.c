@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:54:33 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/12 19:52:11 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/12 20:19:45 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,14 @@ static int	complete(t_map *map)
 			return (ft_putendl_fd("Error\nMissing texture", 2), 0);
 	i = -1;
 	while (++i < 3)
+	{
 		if (map->floor_color[i] < 0 || map->ceiling_color[i] < 0)
 			return (ft_putendl_fd("Error\n"
 					"Missing parameters for colors", 2), 0);
+		if (map->floor_color[i] > 255 || map->ceiling_color[i] > 255)
+			return (ft_putendl_fd("Error\n"
+					"RGB out of range", 2), 0);
+	}
 	if (map->count_texture != 4)
 		return (ft_putendl_fd("Error\n"
 				"Multiple paths for same texture", 2), 0);

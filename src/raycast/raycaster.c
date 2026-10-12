@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 02:31:06 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/12 03:18:12 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/12 19:55:29 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	init_ray(t_ray *r, t_player *p, int x)
 {
 	double	camera_x;
-	
+
 	camera_x = 2 * x / (double)WIN_W - 1;
 	r->dir_x = p->dir_x + p->plane_x * camera_x;
 	r->dir_y = p->dir_y + p->plane_y * camera_x;

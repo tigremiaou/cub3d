@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 21:35:19 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/10 03:45:23 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/12 19:59:24 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	free_all(char **lines, t_map *map)
 
 	free_lines(lines);
 	i = -1;
-	while(++i < 4)
+	while (++i < 4)
 		free(map->texture_path[i]);
 	if (!map->grid)
 		return ;

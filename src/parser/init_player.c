@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/11 03:16:14 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/12 00:19:11 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/12 19:56:30 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
