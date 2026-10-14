@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:52:38 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/12 19:56:15 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/14 16:55:27 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static int	is_valid_char(char c)
 		&& c != '0'
 		&& c != '1'
 		&& c != ' ')
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 static int	check_char(t_map *map, int i, int j, int *count)
 {
-	if (is_valid_char(map->grid[i][j]))
+	if (!is_valid_char(map->grid[i][j]))
 		return (ft_putendl_fd("Error\nInvalid character in map", 2), 1);
 	if (map->grid[i][j] == 'N' || map->grid[i][j] == 'S'
 		|| map->grid[i][j] == 'E' || map->grid[i][j] == 'W')
@@ -66,6 +66,8 @@ int	find_player(t_map *map)
 int	valid_map(t_map *map)
 {
 	if (find_player(map))
-		return (0);
-	return (1);
+		return (1);
+	if (check_map(map))
+		return (1);
+	return (0);
 }

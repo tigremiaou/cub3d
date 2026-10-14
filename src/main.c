@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 14:37:11 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/12 19:48:43 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/14 16:48:23 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 	lines = read_lines(av[1]);
 	if (!lines)
 		return (printf("Error\nInitializing lines\n"), 1);
-	if (create_map(lines, &g.map) || !valid_map(&g.map))
+	if (create_map(lines, &g.map) || valid_map(&g.map))
 		return (free_all(lines, &g.map), 1);
 	free_lines(lines);
 	init_player(&g.player, &g.map);

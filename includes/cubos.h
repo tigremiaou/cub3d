@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubos.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 15:59:31 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/12 17:55:49 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/14 16:56:06 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int		key_press(int key, t_game *g);
 void	free_lines(char **lines);
 char	**read_lines(char *path);
 int		valid_map(t_map *map);
+int		check_map(t_map *map);
 int		get_hex_rgb(int *rgb);
 void	free_map(t_map *map);
 int		count_h(char **grid);

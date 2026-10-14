@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+         #
+#    By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/19 11:27:45 by nmeunier          #+#    #+#              #
-#    Updated: 2026/10/12 17:41:40 by hulescur         ###   ########.fr        #
+#    Updated: 2026/10/14 16:56:18 by nmeunier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRCS = $(GNL) $(LIBFT) src/main.c src/parser/read_lines.c src/parser/create_map.
 						src/free/free.c src/parser/valid_map.c src/parser/create_map_utils.c \
 						src/parser/handle_map.c src/display/cleaner.c src/display/displayer.c \
 						src/parser/init_player.c src/raycast/map_utils.c \
-						src/raycast/raycaster.c \
+						src/raycast/raycaster.c src/parser/floodfill.c
 
 CC = cc
 RM = rm -f
