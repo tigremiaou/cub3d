@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   displayer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 03:21:47 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/20 19:34:19 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/20 20:11:04 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void	columner(t_game *g, t_ray *r, int x)
 int	render(t_game *g)
 {
 	t_ray	r;
-	
-	// if (get_ms() - g->last_frame < 1000 / FPS);
-	// 	return (0);
-	// mover(g->key, g->player);
+
+	if (get_ms() - g->last_frame < 1000 / FPS)
+		return (0);
+	mover(g);
 	raycaster(g, &r);
 	mlx_put_image_to_window(g->mlx, g->win, g->screen.img, 0, 0);
 	g->last_frame = get_ms();

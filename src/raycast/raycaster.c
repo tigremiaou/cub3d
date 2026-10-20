@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 02:31:06 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/20 19:02:47 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/20 19:42:23 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	raycaster(t_game *g, t_ray *r)
 	int	x;
 
 	x = -1;
-	while(++x < WIN_W)
+	while (++x < WIN_W)
 	{
 		init_ray(r, &g->player, x);
 		init_step(r, &g->player);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/11 03:53:11 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/20 19:28:46 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/20 19:43:14 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	facer(t_ray *r)
 long	get_ms(void)
 {
 	struct timeval	time;
-		int				error;
+	int				error;
 
 	error = gettimeofday(&time, NULL);
 	if (error)

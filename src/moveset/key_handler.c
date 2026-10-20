@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:03:31 by hulescur          #+#    #+#             */
-/*   Updated: 2026/10/20 17:45:29 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/20 19:59:34 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,40 @@
 
 int	key_press(int key, void *param)
 {
-	t_key *k;
+	t_key	*k;
 
 	k = (t_key *) param;
 	if (key == KEY_W)
-		k->w = true;
+		k->w = TRUE;
 	if (key == KEY_A)
-		k->a = true;
+		k->a = TRUE;
 	if (key == KEY_S)
-		k->s = true;
+		k->s = TRUE;
 	if (key == KEY_D)
-		k->d = true;
+		k->d = TRUE;
 	if (key == LEFT_ARR)
-		k->lefta = true;
+		k->lefta = TRUE;
 	if (key == RIGHT_ARR)
-		k->righta = true;
+		k->righta = TRUE;
 	return (0);
 }
 
 int	key_release(int key, void *param)
 {
-	t_key *k;
+	t_key	*k;
 
 	k = (t_key *) param;
 	if (key == KEY_W)
-		k->w = false;
+		k->w = FALSE;
 	if (key == KEY_A)
-		k->a = false;
+		k->a = FALSE;
 	if (key == KEY_S)
-		k->s = false;
+		k->s = FALSE;
 	if (key == KEY_D)
-		k->d = false;
+		k->d = FALSE;
 	if (key == LEFT_ARR)
-		k->lefta = false;
+		k->lefta = FALSE;
 	if (key == RIGHT_ARR)
-		k->righta = false;
+		k->righta = FALSE;
 	return (0);
 }

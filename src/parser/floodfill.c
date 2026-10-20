@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 16:53:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/14 17:49:43 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/20 20:57:17 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	floodfill(char **visited, int x, int y)
 		return (1);
 	if (visited[y][x] == '1')
 		return (0);
-	visited[y][x] = '1';	
+	visited[y][x] = '1';
 	if (floodfill(visited, x - 1, y) == 1)
 		return (1);
 	if (floodfill(visited, x + 1, y) == 1)
@@ -46,7 +46,7 @@ int	count_height(char **map)
 
 static char	**alloc_visited(t_map *map)
 {
-	char **visited;
+	char	**visited;
 	int		i;
 
 	visited = malloc(sizeof(char *) * (count_height(map->grid) + 1));
@@ -65,15 +65,16 @@ static char	**alloc_visited(t_map *map)
 
 int	check_map(t_map *map)
 {
-	char **visited;
+	char	**visited;
 	int		result;
 
 	visited = alloc_visited(map);
 	if (!visited)
-		return (ft_putendl_fd("Error\nProblem while initializing visited",2 ), 1);
+		return (ft_putendl_fd("Error\n"
+				"Problem while initializing visited", 2), 1);
 	result = floodfill(visited, map->start_x, map->start_y);
 	free_lines(visited);
 	if (result)
-		return(ft_putendl_fd("Error\nInvalid map",2 ), 1);
+		return (ft_putendl_fd("Error\nInvalid map", 2), 1);
 	return (0);
 }

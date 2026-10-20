@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubos.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 15:59:31 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/20 19:36:13 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/20 20:10:43 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,15 @@
 # define W 1
 # define N 2
 # define S 3
-# define false 0
-# define true 1
+# define FALSE 0
+# define TRUE 1
 
 # define FOV 0.77
 # define FPS 60
+# define SPEED 0.05
+# define ROTATION 0.04
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	double	delta_x;
 	double	delta_y;
@@ -79,7 +81,7 @@ typedef struct s_player
 	double	plane_y;
 }	t_player;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img;
 	char	*adr;
@@ -98,7 +100,7 @@ typedef struct s_key
 	int			righta;
 }				t_key;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	long		last_frame;
 	int			ceiling;
@@ -124,7 +126,6 @@ int		is_wall(t_game *g, int x, int y);
 int		key_press(int key, void *param);
 void	raycaster(t_game *g, t_ray *r);
 int		match_id(char *line, char *id);
-void	mover(t_key *k, t_player *p);
 void	free_lines(char **lines);
 char	**read_lines(char *path);
 int		valid_map(t_map *map);
@@ -136,6 +137,7 @@ int		init_mlx(t_game *g);
 void	destroyy(t_game *g);
 int		render(t_game *g);
 int		closee(t_game *g);
+void	mover(t_game *g);
 void	facer(t_ray *r);
 long	get_ms(void);
 
