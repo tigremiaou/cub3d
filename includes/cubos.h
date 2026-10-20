@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubos.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 15:59:31 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/14 16:56:06 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/20 19:36:13 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,29 @@
 # define CUBOS_H
 
 # include "get_next_line.h"
+# include <sys/time.h>
 # include "libft.h"
-# include "mlx.h"
 # include "math.h"
+# include "mlx.h"
 
 # define WIN_W 1280
 # define WIN_H 720
 # define KEY_ESC 65307
+# define LEFT_ARR 65361
+# define RIGHT_ARR 65363
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define E 0
+# define W 1
+# define N 2
+# define S 3
+# define false 0
+# define true 1
 
-# define FOV 0.66
+# define FOV 0.77
+# define FPS 60
 
 typedef struct	s_ray
 {
@@ -74,28 +88,43 @@ typedef struct	s_img
 	int		endian;
 }	t_img;
 
+typedef struct s_key
+{
+	int			w;
+	int			a;
+	int			s;
+	int			d;
+	int			lefta;
+	int			righta;
+}				t_key;
+
 typedef struct	s_game
 {
-	void		*mlx;
-	void		*win;
+	long		last_frame;
+	int			ceiling;
 	t_img		screen;
-	t_map		map;
 	t_player	player;
 	int			floor;
-	int			ceiling;
 	int			map_h;
+	void		*mlx;
+	void		*win;
+	t_map		map;
+	t_key		key;
 }	t_game;
 
-void	raycaster(t_game *g, t_ray *r, int x);
 int		create_map(char **lines, t_map *map);
 void	init_player(t_player *p, t_map *map);
+void	columner(t_game *g, t_ray *r, int x);
 char	*skip_space(char *line, int len_id);
 void	free_all(char **lines, t_map *map);
 int		parse_color(char *str, int *dest);
 int		handle_id(char *line, t_map *map);
+int		key_release(int key, void *param);
 int		is_wall(t_game *g, int x, int y);
+int		key_press(int key, void *param);
+void	raycaster(t_game *g, t_ray *r);
 int		match_id(char *line, char *id);
-int		key_press(int key, t_game *g);
+void	mover(t_key *k, t_player *p);
 void	free_lines(char **lines);
 char	**read_lines(char *path);
 int		valid_map(t_map *map);
@@ -107,5 +136,7 @@ int		init_mlx(t_game *g);
 void	destroyy(t_game *g);
 int		render(t_game *g);
 int		closee(t_game *g);
+void	facer(t_ray *r);
+long	get_ms(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 03:21:47 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/12 19:58:43 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/20 19:34:19 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ int	init_mlx(t_game *g)
 		return (ft_putendl_fd("Error\ncreating image", 2), 1);
 	g->screen.adr = mlx_get_data_addr(g->screen.img, &g->screen.bpp,
 			&g->screen.linel, &g->screen.endian);
+	mlx_hook(g->win, 2, (1L << 0), (void *)key_press, &g->key);
+	mlx_hook(g->win, 3, (1L << 1), (void *)key_release, &g->key);
+	mlx_hook(g->win, 17, 0, closee, g);
+	mlx_loop_hook(g->mlx, render, g);
+	mlx_loop(g->mlx);
 	return (0);
 }
 
@@ -47,7 +52,7 @@ void	columner(t_game *g, t_ray *r, int x)
 	int	wall;
 
 	wall = 0x555555;
-	if (r->face == 1)
+	if (r->face == N || r->face == S)
 		wall = 0xFFFFFF;
 	y = -1;
 	while (++y < WIN_H)
@@ -64,14 +69,12 @@ void	columner(t_game *g, t_ray *r, int x)
 int	render(t_game *g)
 {
 	t_ray	r;
-	int		x;
-
-	x = -1;
-	while (++x < WIN_W)
-	{
-		raycaster(g, &r, x);
-		columner(g, &r, x);
-	}
+	
+	// if (get_ms() - g->last_frame < 1000 / FPS);
+	// 	return (0);
+	// mover(g->key, g->player);
+	raycaster(g, &r);
 	mlx_put_image_to_window(g->mlx, g->win, g->screen.img, 0, 0);
+	g->last_frame = get_ms();
 	return (0);
 }

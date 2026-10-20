@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycaster.c                                        :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/11 03:53:11 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/12 02:15:40 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/20 19:28:46 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,37 @@ int	is_wall(t_game *g, int x, int y)
 	if (x >= (int)ft_strlen(row))
 		return (1);
 	return (row[x] == '1' || row[x] == ' ');
+}
+
+void	facer(t_ray *r)
+{
+	if (r->side_x < r->side_y)
+	{
+		r->side_x += r->delta_x;
+		r->map_x += r->step_x;
+		if (r->side_x < 0)
+			r->face = E;
+		else
+			r->face = W;
+	}
+	else
+	{
+		r->side_y += r->delta_y;
+		r->map_y += r->step_y;
+		if (r->side_y < 0)
+			r->face = N;
+		else
+			r->face = S;
+	}
+}
+
+long	get_ms(void)
+{
+	struct timeval	time;
+		int				error;
+
+	error = gettimeofday(&time, NULL);
+	if (error)
+		return (0);
+	return ((time.tv_sec * 1000L) + (time.tv_usec / 1000L));
 }

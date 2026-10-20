@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 14:37:11 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/14 16:48:23 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/20 15:59:40 by hulescur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,5 @@ int	main(int ac, char **av)
 	g.ceiling = get_hex_rgb(g.map.ceiling_color);
 	if (init_mlx(&g))
 		return (destroyy(&g), 1);
-	mlx_hook(g.win, 2, 1L << 0, key_press, &g);
-	mlx_hook(g.win, 17, 0, closee, &g);
-	mlx_loop_hook(g.mlx, render, &g);
-	mlx_loop(g.mlx);
 	return (0);
 }
