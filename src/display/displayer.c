@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   displayer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 03:21:47 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/21 00:36:42 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/21 22:49:23 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubos.h"
-
-int	get_hex_rgb(int *rgb)
-{
-	return ((rgb[0] << 16) | (rgb[1] << 8) | rgb[2]);
-}
-
-void	put_pixel_img(t_img *img, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = img->adr + y * img->linel + x * (img->bpp / 8);
-	*(unsigned int *)dst = color;
-}
 
 int	init_mlx(t_game *g)
 {
@@ -38,6 +25,8 @@ int	init_mlx(t_game *g)
 		return (ft_putendl_fd("Error\ncreating image", 2), 1);
 	g->screen.adr = mlx_get_data_addr(g->screen.img, &g->screen.bpp,
 			&g->screen.linel, &g->screen.endian);
+	if (!init_texture(g))
+		return (ft_putendl_fd("Error\ninitializing textures", 2), 1);
 	mlx_hook(g->win, 2, (1L << 0), (void *)key_press, g);
 	mlx_hook(g->win, 3, (1L << 1), (void *)key_release, &g->key);
 	mlx_hook(g->win, 17, 0, closee, g);
@@ -46,14 +35,24 @@ int	init_mlx(t_game *g)
 	return (0);
 }
 
+void	waller(t_game *g, int x, int y, int wh)
+{
+	
+}
+
 void	columner(t_game *g, t_ray *r, int x)
 {
 	int	y;
 	int	wall;
 
-	wall = 0x555555;
-	if (r->face == N || r->face == S)
-		wall = 0xFFFFFF;
+	if (r->face == N)
+		wall = 0xFF0000;
+	else if (r->face == S)
+		wall = 0x00FF00;
+	else if (r->face == E)
+		wall = 0x0000FF;
+	else
+		wall = 0xFFFF00;
 	y = -1;
 	while (++y < WIN_H)
 	{
@@ -62,7 +61,10 @@ void	columner(t_game *g, t_ray *r, int x)
 		else if (y > r->drawe)
 			put_pixel_img(&g->screen, x, y, g->floor);
 		else
-			put_pixel_img(&g->screen, x, y, wall);
+		{
+			waller(g, x, y, drawe - draws);
+			y = drawe;
+		}
 	}
 }
 

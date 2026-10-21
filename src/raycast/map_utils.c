@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/11 03:53:11 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/20 19:43:14 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/21 21:18:50 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ void	facer(t_ray *r)
 	{
 		r->side_x += r->delta_x;
 		r->map_x += r->step_x;
-		if (r->side_x < 0)
-			r->face = E;
-		else
+		if (r->step_x < 0)
 			r->face = W;
+		else
+			r->face = E;
 	}
 	else
 	{
 		r->side_y += r->delta_y;
 		r->map_y += r->step_y;
-		if (r->side_y < 0)
+		if (r->step_y < 0)
 			r->face = N;
 		else
 			r->face = S;

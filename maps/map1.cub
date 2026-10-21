@@ -3,8 +3,8 @@ SO ./textures/horreur_so.xpm
 WE ./textures/horreur_we.xpm
 EA ./textures/horreur_ea.xpm
 
-C 181,181,181
-F 180,180,180
+F 32,32,32
+C 51,153,251
 
    11111111111111111 
  11100000000000000001111

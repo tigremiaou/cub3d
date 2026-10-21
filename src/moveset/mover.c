@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mover.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 14:48:00 by hulescur          #+#    #+#             */
-/*   Updated: 2026/10/21 00:26:59 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/21 16:49:28 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	mover_lefta(t_game *g)
 {
 	double	tempx;
-	
+
 	tempx = g->player.dir_x;
 	g->player.dir_x = tempx * cos(ROT) + g->player.dir_y * sin(ROT);
 	g->player.dir_y = -tempx * sin(ROT) + g->player.dir_y * cos(ROT);
@@ -26,7 +26,7 @@ static void	mover_lefta(t_game *g)
 static void	mover_righta(t_game *g)
 {
 	double	tempx;
-	
+
 	tempx = g->player.dir_x;
 	g->player.dir_x = tempx * cos(ROT) - g->player.dir_y * sin(ROT);
 	g->player.dir_y = tempx * sin(ROT) + g->player.dir_y * cos(ROT);

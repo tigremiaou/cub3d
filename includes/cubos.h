@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubos.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 15:59:31 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/21 00:03:06 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/21 22:38:24 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
-# define E 0
-# define W 1
-# define N 2
-# define S 3
+# define N 0
+# define S 1
+# define E 2
+# define W 3
 # define FALSE 0
 # define TRUE 1
 
 # define FOV 0.8
 # define FPS 60
 # define SPEED 0.05
-# define ROT 0.04
+# define ROT 0.06
 
 typedef struct s_ray
 {
@@ -83,11 +83,15 @@ typedef struct s_player
 
 typedef struct s_img
 {
-	void	*img;
-	char	*adr;
-	int		bpp;
-	int		linel;
-	int		endian;
+	int			col_tex;
+	double		wall_x;
+	int			endian;
+	int			height;
+	int			linel;
+	int			width;
+	void		*img;
+	char		*adr;
+	int			bpp;
 }	t_img;
 
 typedef struct s_key
@@ -102,6 +106,7 @@ typedef struct s_key
 
 typedef struct s_game
 {
+	t_img		textures[4];
 	long		last_frame;
 	int			ceiling;
 	t_img		screen;
@@ -114,9 +119,11 @@ typedef struct s_game
 	t_key		key;
 }	t_game;
 
+void	put_pixel_img(t_img *img, int x, int y, int color);
 int		create_map(char **lines, t_map *map);
 void	init_player(t_player *p, t_map *map);
 void	columner(t_game *g, t_ray *r, int x);
+void	display_texture(t_game *g, t_ray *r);
 char	*skip_space(char *line, int len_id);
 void	free_all(char **lines, t_map *map);
 int		parse_color(char *str, int *dest);
@@ -128,6 +135,7 @@ void	raycaster(t_game *g, t_ray *r);
 int		match_id(char *line, char *id);
 void	free_lines(char **lines);
 char	**read_lines(char *path);
+int		init_texture(t_game *g);
 int		valid_map(t_map *map);
 int		check_map(t_map *map);
 int		get_hex_rgb(int *rgb);

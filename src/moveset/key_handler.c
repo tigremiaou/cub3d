@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:03:31 by hulescur          #+#    #+#             */
-/*   Updated: 2026/10/21 00:46:01 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/21 15:48:51 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	key_press(int key, void *param)
 {
 	t_game	*g;
 
-	g = (t_game *) param;
+	g = (t_game *)param;
 	if (key == KEY_W)
 		g->key.w = TRUE;
 	if (key == KEY_A)
