@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   displayer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 03:21:47 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/20 20:11:04 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/21 00:36:42 by akkolitozer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	init_mlx(t_game *g)
 		return (ft_putendl_fd("Error\ncreating image", 2), 1);
 	g->screen.adr = mlx_get_data_addr(g->screen.img, &g->screen.bpp,
 			&g->screen.linel, &g->screen.endian);
-	mlx_hook(g->win, 2, (1L << 0), (void *)key_press, &g->key);
+	mlx_hook(g->win, 2, (1L << 0), (void *)key_press, g);
 	mlx_hook(g->win, 3, (1L << 1), (void *)key_release, &g->key);
 	mlx_hook(g->win, 17, 0, closee, g);
 	mlx_loop_hook(g->mlx, render, g);

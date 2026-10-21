@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubos.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 15:59:31 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/20 20:10:43 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/21 00:03:06 by akkolitozer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@
 # define FALSE 0
 # define TRUE 1
 
-# define FOV 0.77
+# define FOV 0.8
 # define FPS 60
 # define SPEED 0.05
-# define ROTATION 0.04
+# define ROT 0.04
 
 typedef struct s_ray
 {

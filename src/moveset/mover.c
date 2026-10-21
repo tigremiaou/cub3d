@@ -3,28 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   mover.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 14:48:00 by hulescur          #+#    #+#             */
-/*   Updated: 2026/10/20 21:05:27 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/21 00:26:59 by akkolitozer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cubos.h"
 
-/* static void	mover_arrow(t_game *g)
+static void	mover_lefta(t_game *g)
 {
-	if (g->key.lefta == TRUE)
-	{
+	double	tempx;
+	
+	tempx = g->player.dir_x;
+	g->player.dir_x = tempx * cos(ROT) + g->player.dir_y * sin(ROT);
+	g->player.dir_y = -tempx * sin(ROT) + g->player.dir_y * cos(ROT);
+	g->player.plane_x = -g->player.dir_y * FOV;
+	g->player.plane_y = g->player.dir_x * FOV;
+}
 
-		
-	}
-	if (g->key.righta == TRUE)
-	{
-
-		
-	}
-} */
+static void	mover_righta(t_game *g)
+{
+	double	tempx;
+	
+	tempx = g->player.dir_x;
+	g->player.dir_x = tempx * cos(ROT) - g->player.dir_y * sin(ROT);
+	g->player.dir_y = tempx * sin(ROT) + g->player.dir_y * cos(ROT);
+	g->player.plane_x = -g->player.dir_y * FOV;
+	g->player.plane_y = g->player.dir_x * FOV;
+}
 
 static void	verif_mover(t_game *g, double x, double y)
 {
@@ -44,10 +52,13 @@ void	mover(t_game *g)
 	if (g->key.w == TRUE)
 		verif_mover(g, g->player.dir_x * SPEED, g->player.dir_y * SPEED);
 	if (g->key.a == TRUE)
-		verif_mover(g, g->player.dir_y * SPEED, g->player.dir_x * SPEED);
+		verif_mover(g, g->player.dir_y * SPEED, -g->player.dir_x * SPEED);
 	if (g->key.s == TRUE)
 		verif_mover(g, -g->player.dir_x * SPEED, -g->player.dir_y * SPEED);
 	if (g->key.d == TRUE)
-		verif_mover(g, -g->player.dir_y * SPEED, -g->player.dir_x * SPEED);
-/* 	mover_arrow(g, p); */
+		verif_mover(g, -g->player.dir_y * SPEED, g->player.dir_x * SPEED);
+	if (g->key.lefta == TRUE)
+		mover_lefta(g);
+	if (g->key.righta == TRUE)
+		mover_righta(g);
 }
