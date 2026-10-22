@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:03:31 by hulescur          #+#    #+#             */
-/*   Updated: 2026/10/21 15:48:51 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/22 03:00:29 by akkolitozer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	key_press(int key, void *param)
 		g->key.righta = TRUE;
 	if (key == KEY_ESC)
 		closee(g);
+	if (key == SHIFT)
+		g->key.shift = SPRINT;
 	return (0);
 }
 
@@ -51,5 +53,7 @@ int	key_release(int key, void *param)
 		k->lefta = FALSE;
 	if (key == RIGHT_ARR)
 		k->righta = FALSE;
+	if (key == SHIFT)
+		k->shift = 1.0;
 	return (0);
 }

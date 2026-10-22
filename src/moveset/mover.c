@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mover.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 14:48:00 by hulescur          #+#    #+#             */
-/*   Updated: 2026/10/21 16:49:28 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/22 03:04:52 by akkolitozer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static void	verif_mover(t_game *g, double x, double y)
 	double	new_x;
 	double	new_y;
 
-	new_x = g->player.pos_x + x;
-	new_y = g->player.pos_y + y;
+	new_x = g->player.pos_x + (x * g->key.shift);
+	new_y = g->player.pos_y + (y * g->key.shift);
 	if (!is_wall(g, (int)new_x, (int)g->player.pos_y))
 		g->player.pos_x = new_x;
 	if (!is_wall(g, (int)g->player.pos_x, (int)new_y))

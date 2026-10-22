@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 02:31:06 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/21 21:41:53 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/21 23:39:25 by akkolitozer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	raycaster(t_game *g, t_ray *r)
 		init_step(r, &g->player);
 		dda(r, g);
 		liner(r);
-		display_texture(g, r);
+		display_texture(g);
 		columner(g, r, x);
 	}
 }

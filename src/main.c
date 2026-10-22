@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 14:37:11 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/20 15:59:40 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/22 03:05:29 by akkolitozer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int ac, char **av)
 	char	**lines;
 
 	ft_bzero(&g, sizeof(t_game));
+	g.key.shift = 1.0;
 	if (ac != 2)
 		return (printf("Error\nWrong number of arguments\n"), 1);
 	lines = read_lines(av[1]);

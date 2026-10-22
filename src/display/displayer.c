@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   displayer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 03:21:47 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/21 22:49:23 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/22 03:07:44 by akkolitozer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,33 @@ int	init_mlx(t_game *g)
 	return (0);
 }
 
-void	waller(t_game *g, int x, int y, int wh)
+void	waller(t_game *g, int x, int y)
 {
-	
+	t_img	*tex;
+	double	step;
+	double	pos;
+	int		tex_y;
+
+	tex = get_tex(g);
+	if (!tex)
+		return ;
+	step = (double)tex->height / g->ray.line_h;
+	pos = (g->ray.draws - WIN_H / 2 + g->ray.line_h / 2) * step;
+	while (y < g->ray.drawe)
+	{
+		tex_y = (int) pos;
+		if (tex_y >= tex->height)
+			tex_y = tex->height - 1;
+		pos += step;
+		put_pixel_img(&g->screen, x, y, get_pixel(tex, g->ray.tex_x, tex_y));
+		y++;
+	}
 }
 
 void	columner(t_game *g, t_ray *r, int x)
 {
 	int	y;
-	int	wall;
 
-	if (r->face == N)
-		wall = 0xFF0000;
-	else if (r->face == S)
-		wall = 0x00FF00;
-	else if (r->face == E)
-		wall = 0x0000FF;
-	else
-		wall = 0xFFFF00;
 	y = -1;
 	while (++y < WIN_H)
 	{
@@ -62,20 +71,18 @@ void	columner(t_game *g, t_ray *r, int x)
 			put_pixel_img(&g->screen, x, y, g->floor);
 		else
 		{
-			waller(g, x, y, drawe - draws);
-			y = drawe;
+			waller(g, x, y);
+			y = r->drawe;
 		}
 	}
 }
 
 int	render(t_game *g)
 {
-	t_ray	r;
-
 	if (get_ms() - g->last_frame < 1000 / FPS)
 		return (0);
 	mover(g);
-	raycaster(g, &r);
+	raycaster(g, &g->ray);
 	mlx_put_image_to_window(g->mlx, g->win, g->screen.img, 0, 0);
 	g->last_frame = get_ms();
 	return (0);

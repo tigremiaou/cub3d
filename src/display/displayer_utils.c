@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   displayer_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 22:37:35 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/21 22:42:44 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/22 02:47:13 by akkolitozer      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,18 @@ int	get_pixel(t_img *img, int x, int y)
 	char	*dst;
 
 	dst = img->adr + y * img->linel + x * (img->bpp / 8);
-	return (*(int)dst);
+	return (*(int *)dst);
+}
+
+t_img	*get_tex(t_game *g)
+{
+	if (g->ray.face == N)
+		return (&g->textures[0]);
+	if (g->ray.face == S)
+		return (&g->textures[1]);
+	if (g->ray.face == E)
+		return (&g->textures[2]);
+	if (g->ray.face == W)
+		return (&g->textures[3]);
+	return (NULL);
 }
