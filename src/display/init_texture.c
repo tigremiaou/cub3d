@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 16:37:01 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/21 23:37:18 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/23 19:38:17 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	display_texture(t_game *g)
 	g->ray.wall_x -= (int)g->ray.wall_x;
 	if (g->ray.face == S || g->ray.face == W)
 		g->ray.wall_x = 1 - g->ray.wall_x;
-	g->ray.tex_x = g->ray.wall_x * 64;
+	g->ray.tex_x = g->ray.wall_x * g->textures[0].width;
 }
 
 int	init_texture(t_game *g)

@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 15:51:23 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/23 18:33:50 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/23 20:31:39 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,11 @@ int	parse_color(char *str, int *dest)
 	int		i;
 
 	rgb = ft_split(str, ',');
-	i = -1;
+	i = 0;
+	while (rgb[i])
+		i++;
+	if (i != 3)
+		return (free_lines(rgb), 1);
 	if (!rgb)
 		return (1);
 	i = 0;
@@ -75,7 +79,7 @@ void	check_cub(char *path, char *cub)
 	int	path_len;
 
 	path_len = ft_strlen(path);
-	if (path_len <= 4)
+	if (path_len <= 0)
 	{
 		ft_putendl_fd("Error\nNeed a name for map", 2);
 		exit(2);

@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 16:51:53 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/23 18:43:11 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/23 19:34:35 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,14 @@ static int	handle_texture_we_ea(char *lines, t_map *map)
 {
 	if (match_id(lines, "WE"))
 	{
-		free(map->texture_path[2]);
-		map->texture_path[2] = ft_strdup(skip_space(lines, 2));
+		free(map->texture_path[3]);
+		map->texture_path[3] = ft_strdup(skip_space(lines, 2));
 		map->count_texture++;
 	}
 	else if (match_id(lines, "EA"))
 	{
-		free(map->texture_path[3]);
-		map->texture_path[3] = ft_strdup(skip_space(lines, 2));
+		free(map->texture_path[2]);
+		map->texture_path[2] = ft_strdup(skip_space(lines, 2));
 		map->count_texture++;
 	}
 	else
