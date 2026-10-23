@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 15:51:23 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/12 20:06:52 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/23 18:33:50 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,21 @@ int	parse_color(char *str, int *dest)
 	if (i != 3)
 		return (1);
 	return (0);
+}
+
+void	check_cub(char *path, char *cub)
+{
+	int	path_len;
+
+	path_len = ft_strlen(path);
+	if (path_len <= 4)
+	{
+		ft_putendl_fd("Error\nNeed a name for map", 2);
+		exit(2);
+	}
+	if (ft_strncmp(path + path_len - 4, cub, 4))
+	{
+		ft_putendl_fd("Error\nNeed .cub format", 2);
+		exit(2);
+	}
 }

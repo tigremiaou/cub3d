@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 14:37:11 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/22 03:05:29 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/23 18:21:38 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,9 @@ int	main(int ac, char **av)
 	t_game	g;
 	char	**lines;
 
+	parser(av[1], ac, &lines);
 	ft_bzero(&g, sizeof(t_game));
 	g.key.shift = 1.0;
-	if (ac != 2)
-		return (printf("Error\nWrong number of arguments\n"), 1);
-	lines = read_lines(av[1]);
-	if (!lines)
-		return (printf("Error\nInitializing lines\n"), 1);
 	if (create_map(lines, &g.map) || valid_map(&g.map))
 		return (free_all(lines, &g.map), 1);
 	free_lines(lines);

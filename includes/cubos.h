@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubos.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 15:59:31 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/22 03:06:51 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/23 18:42:49 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_map
 	char	*texture_path[4]; /*0=NO 1="SO" 2="WE" 3="EA"*/
 	int		floor_color[3];
 	int		count_texture;
+	int		count_color;
 	int		start_x;
 	int		start_y;
 	char	**grid;
@@ -124,6 +125,7 @@ typedef struct s_game
 }	t_game;
 
 void	put_pixel_img(t_img *img, int x, int y, int color);
+void	parser(char *av, int ac, char ***lines);
 int		create_map(char **lines, t_map *map);
 void	init_player(t_player *p, t_map *map);
 void	columner(t_game *g, t_ray *r, int x);
@@ -134,6 +136,7 @@ int		parse_color(char *str, int *dest);
 int		handle_id(char *line, t_map *map);
 int		key_release(int key, void *param);
 int		is_wall(t_game *g, int x, int y);
+void	check_cub(char *path, char *cub);
 int		key_press(int key, void *param);
 void	raycaster(t_game *g, t_ray *r);
 int		match_id(char *line, char *id);

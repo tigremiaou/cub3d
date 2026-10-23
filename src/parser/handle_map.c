@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 16:51:53 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/12 19:25:55 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/23 18:43:11 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ static int	handle_color(char *lines, t_map *map)
 	{
 		if (parse_color(skip_space(lines, 1), map->floor_color))
 			return (1);
+		map->count_color++;
 	}
 	else if (match_id(lines, "C"))
 	{
 		if (parse_color(skip_space(lines, 1), map->ceiling_color))
 			return (1);
+		map->count_color++;
 	}
 	else
 		return (0);

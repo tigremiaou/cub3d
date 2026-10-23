@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulescur <hulescur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:54:33 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/12 20:19:45 by hulescur         ###   ########.fr       */
+/*   Updated: 2026/10/23 18:44:59 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int	find_start(char **lines, t_map *map)
 
 	i = -1;
 	map->count_texture = 0;
+	map->count_color = 0;
 	while (++i < 3)
 	{
 		map->floor_color[i] = -1;
@@ -56,10 +57,29 @@ static int	complete(t_map *map)
 			return (ft_putendl_fd("Error\n"
 					"RGB out of range", 2), 0);
 	}
-	if (map->count_texture != 4)
+	if (map->count_texture > 4)
 		return (ft_putendl_fd("Error\n"
 				"Multiple paths for same texture", 2), 0);
+	if (map->count_color > 2)
+		return (ft_putendl_fd("Error\n"
+				"Multiple paths for same color", 2), 0);
 	return (1);
+}
+
+void	parser(char *av, int ac, char ***lines)
+{
+	if (ac != 2)
+	{
+		ft_putendl_fd("Error\nWrong number of arguments\n", 2);
+		exit(2);
+	}
+	check_cub(av, ".cub");
+	*lines = read_lines(av);
+	if (!*lines)
+	{
+		ft_putendl_fd("Error\nInvalid map\n", 2);
+		exit(2);
+	}
 }
 
 int	create_map(char **lines, t_map *map)
