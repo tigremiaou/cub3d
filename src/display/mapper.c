@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolito <akkolito@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by akkolito          #+#    #+#             */
-/*   Updated: 2026/11/02 17:30:22 by akkolito         ###   ########.fr       */
+/*   Created: 2026/11/16 18:03:57 by nmeunier          #+#    #+#             */
+/*   Updated: 2026/11/16 18:04:04 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	backer(t_game *g)
 {
 	int	x;
 	int	y;
-	
+
 	x = -1;
 	while (++x < g->map.map_w * 10)
 	{
@@ -30,7 +30,7 @@ void	grider(t_game *g)
 {
 	int	x;
 	int	y;
-	
+
 	x = -1;
 	while (++x < g->map.map_w * 10)
 	{
@@ -56,14 +56,15 @@ void	player(t_game *g)
 {
 	int	x;
 	int	y;
-	
+
 	x = g->player.pos_x * 10 - 3;
 	while (++x < g->player.pos_x * 10 + 3)
 	{
 		y = g->player.pos_y * 10 - 3;
 		while (++y < g->player.pos_y * 10 + 3)
 		{
-			if (fabs(x - (g->player.pos_x) * 10) <= 2 || fabs(y - (g->player.pos_y) * 10) <= 2)
+			if (fabs(x - (g->player.pos_x) * 10) <= 2
+				|| fabs(y - (g->player.pos_y) * 10) <= 2)
 				put_pixel_img(&g->screen, x, y, 0x0000EE);
 		}
 	}
@@ -71,14 +72,12 @@ void	player(t_game *g)
 
 void	coner(t_game *g)
 {
-	int	n = 0;
 	int	x;
 
 	x = 0;
 	while (x < WIN_W)
 	{
 		ray_line(g, g->hit_x[x], g->hit_y[x]);
-		n++;
 		x += 1;
 	}
 }

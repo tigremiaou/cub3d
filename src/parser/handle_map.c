@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 16:51:53 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/23 19:34:35 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/11/16 16:27:31 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,19 @@ static int	handle_texture_we_ea(char *lines, t_map *map)
 	return (1);
 }
 
+static int	handle_texture_door(char *lines, t_map *map)
+{
+	if (match_id(lines, "DO"))
+	{
+		free(map->texture_path[4]);
+		map->texture_path[4] = ft_strdup(skip_space(lines, 2));
+		map->count_texture++;
+	}
+	else
+		return (0);
+	return (1);
+}
+
 int	handle_id(char *lines, t_map *map)
 {
 	int	ret;
@@ -77,6 +90,9 @@ int	handle_id(char *lines, t_map *map)
 	if (ret)
 		return (ret);
 	ret = handle_texture_we_ea(lines, map);
+	if (ret)
+		return (ret);
+	ret = handle_texture_door(lines, map);
 	if (ret)
 		return (ret);
 	ret = handle_color(lines, map);

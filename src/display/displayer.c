@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   displayer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolito <akkolito@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 03:21:47 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/31 02:13:14 by akkolito         ###   ########.fr       */
+/*   Updated: 2026/11/16 17:19:20 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	init_mlx(t_game *g)
 		return (ft_putendl_fd("Error\ncreating image", 2), 1);
 	g->screen.adr = mlx_get_data_addr(g->screen.img, &g->screen.bpp,
 			&g->screen.linel, &g->screen.endian);
-	if (!init_texture(g) || (g->door && !door_texture(g)))
+	if (!init_texture(g) || (g->map.door && !door_texture(g)))
 		return (ft_putendl_fd("Error\ninitializing textures", 2), 1);
 	mlx_hook(g->win, 2, (1L << 0), (void *)key_press, g);
 	mlx_hook(g->win, 3, (1L << 1), (void *)key_release, &g->key);

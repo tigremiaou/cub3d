@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolito <akkolito@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:54:33 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/11/02 18:43:33 by akkolito         ###   ########.fr       */
+/*   Updated: 2026/11/16 18:56:33 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,8 @@ static int	complete(t_map *map)
 			return (ft_putendl_fd("Error\n"
 					"RGB out of range", 2), 0);
 	}
-	if (map->count_texture > 4)
-		return (ft_putendl_fd("Error\n"
-				"Multiple paths for same texture", 2), 0);
 	if (map->count_color > 2)
-		return (ft_putendl_fd("Error\n"
-				"Multiple paths for same color", 2), 0);
+		return (ft_putendl_fd("Error\nMultiple paths for colors", 2), 0);
 	return (1);
 }
 
@@ -76,7 +72,10 @@ void	parser(char *av, int ac, char ***lines)
 	check_cub(av, ".cub");
 	*lines = read_lines(av);
 	if (!*lines)
+	{
+		ft_putendl_fd("Error\nInvalid file", 2);
 		exit(2);
+	}
 }
 
 void	check_oob(char ***line, t_map *map)
@@ -97,6 +96,7 @@ void	check_oob(char ***line, t_map *map)
 				|| border(map->grid, i, j + 1)))
 			{
 				free_all(*line, map);
+				ft_putendl_fd("Error\nMap open", 2);
 				exit(2);
 			}
 		}

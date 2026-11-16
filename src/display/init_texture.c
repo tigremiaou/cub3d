@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolito <akkolito@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 16:37:01 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/11/02 17:56:26 by akkolito         ###   ########.fr       */
+/*   Updated: 2026/11/16 17:01:03 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	door_texture(t_game *g)
 	int	w;
 	int	h;
 
-	g->door_tex.img = mlx_xpm_file_to_image(g->mlx, 
-			DOOR, &w, &h);
+	g->door_tex.img = mlx_xpm_file_to_image(g->mlx,
+			g->map.texture_path[4], &w, &h);
 	if (!g->door_tex.img)
 		return (0);
 	g->door_tex.width = w;

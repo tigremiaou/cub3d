@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubos.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolito <akkolito@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 15:59:31 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/11/02 18:33:00 by akkolito         ###   ########.fr       */
+/*   Updated: 2026/11/16 17:39:15 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # define KEY_D 100
 # define KEY_E 101
 # define SHIFT 65505
-# define DOOR "./textures/horreur_door.xpm"
 # define N 0
 # define S 1
 # define E 2
@@ -70,15 +69,16 @@ typedef struct s_map
 {
 	int		ceiling_color[3];
 	char	direction_player;
-	char	*texture_path[4]; /*0=NO 1="SO" 2="WE" 3="EA"*/
+	char	*texture_path[5]; /*0=NO 1="SO" 2="WE" 3="EA"*/
 	int		floor_color[3];
 	int		count_texture;
 	int		count_color;
 	int		start_x;
 	int		start_y;
+	char	**grid;
 	int		map_w;
 	int		map_h;
-	char	**grid;
+	int		door;
 }	t_map;
 
 typedef struct s_player
@@ -124,7 +124,6 @@ typedef struct s_game
 	t_ray		ray;
 	int			floor;
 	int			map_h;
-	int			door;
 	void		*mlx;
 	void		*win;
 	double		hit_x[WIN_W];

@@ -6,7 +6,7 @@
 /*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/10 03:40:08 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/21 21:14:00 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/11/16 18:29:35 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	destroyy(t_game *g)
 	while (++i < 4)
 		if (g->textures[i].img)
 			mlx_destroy_image(g->mlx, g->textures[i].img);
+	if (g->door_tex.img)
+		mlx_destroy_image(g->mlx, g->door_tex.img);
 	free_map(&g->map);
 	if (g->screen.img)
 		mlx_destroy_image(g->mlx, g->screen.img);

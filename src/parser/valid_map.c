@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolito <akkolito@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:52:38 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/11/02 18:42:53 by akkolito         ###   ########.fr       */
+/*   Updated: 2026/11/16 18:45:46 by nmeunier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	is_valid_char(t_game *g, char c)
 {
 	if (c == 'D')
-		g->door = 1;
+		g->map.door = 1;
 	if (c != 'N'
 		&& c != 'S'
 		&& c != 'E'
@@ -31,7 +31,7 @@ static int	is_valid_char(t_game *g, char c)
 static int	check_char(t_game *g, int i, int j, int *count)
 {
 	if (!is_valid_char(g, g->map.grid[i][j]))
-		return (1);
+		return (ft_putendl_fd("Error\nInvalid character", 2), 1);
 	if (g->map.grid[i][j] == 'N' || g->map.grid[i][j] == 'S'
 		|| g->map.grid[i][j] == 'E' || g->map.grid[i][j] == 'W')
 	{
@@ -61,7 +61,7 @@ int	find_player(t_game *g)
 		}
 	}
 	if (count != 1)
-		return (1);
+		return (ft_putendl_fd("Error\nInvalid number of players", 2), 1);
 	return (0);
 }
 
@@ -74,7 +74,8 @@ int	valid_map(t_game *g)
 
 int	border(char **grid, int i, int j)
 {
-	if (i < 0 || j < 0 || !grid[i] || j >= ft_strlen(grid[i]))
+	if (i < 0 || j < 0 || !grid[i]
+		|| j >= ft_strlen(grid[i]) || grid[i][j] == ' ')
 		return (1);
 	return (0);
 }
