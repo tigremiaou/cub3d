@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akkolito <akkolito@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/07 15:54:33 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/23 20:20:56 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/11/02 18:43:33 by akkolito         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,7 @@ void	parser(char *av, int ac, char ***lines)
 	check_cub(av, ".cub");
 	*lines = read_lines(av);
 	if (!*lines)
-	{
-		ft_putendl_fd("Error\nInvalid map", 2);
 		exit(2);
-	}
 }
 
 void	check_oob(char ***line, t_map *map)
@@ -93,18 +90,14 @@ void	check_oob(char ***line, t_map *map)
 		j = -1;
 		while (map->grid[i][++j])
 		{
-			if (map->grid[i][j] == '0')
+			if ((map->grid[i][j] == '0' || map->grid[i][j] == 'D')
+				&& (border(map->grid, i - 1, j)
+				|| border(map->grid, i + 1, j)
+				|| border(map->grid, i, j - 1)
+				|| border(map->grid, i, j + 1)))
 			{
-				if (!map->grid[i + 1] || i <= 0 || j <= 0
-					|| map->grid[i + 1][j] == ' ' || !map->grid[i + 1][j]
-					|| map->grid[i - 1][j] == ' ' || !map->grid[i - 1][j]
-					|| map->grid[i][j + 1] == ' ' || !map->grid[i][j + 1]
-					|| map->grid[i][j - 1] == ' ' || !map->grid[i][j - 1])
-				{
-					ft_putendl_fd("Error\nOut of bounds detected", 2);
-					free_all(*line, map);
-					exit(2);
-				}
+				free_all(*line, map);
+				exit(2);
 			}
 		}
 	}

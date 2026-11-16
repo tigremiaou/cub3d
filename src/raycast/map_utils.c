@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akkolito <akkolito@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/11 03:53:11 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/21 21:18:50 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/10/31 02:00:13 by akkolito         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ int	is_wall(t_game *g, int x, int y)
 	row = g->map.grid[y];
 	if (x >= (int)ft_strlen(row))
 		return (1);
-	return (row[x] == '1' || row[x] == ' ');
+	if (row[x] == '1')
+		g->ray.type = 1;
+	if (row[x] == 'D')
+		g->ray.type = 2;
+	return (row[x] == '1' || row[x] == ' ' || row[x] == 'D');
 }
 
 void	facer(t_ray *r)

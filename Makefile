@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+         #
+#    By: akkolito <akkolito@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/19 11:27:45 by nmeunier          #+#    #+#              #
-#    Updated: 2026/10/21 23:39:53 by akkolitozer      ###   ########.fr        #
+#    Updated: 2026/11/02 18:27:03 by akkolito         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,8 @@ SRCS = $(GNL) $(LIBFT) src/main.c src/parser/read_lines.c src/parser/create_map.
 						src/raycast/raycaster.c src/parser/floodfill.c \
 						src/moveset/key_handler.c  src/moveset/mover.c\
 						src/display/init_texture.c src/display/displayer_utils.c \
+						src/display/mapper.c src/display/mapper_utils.c \
+						src/moveset/doorer.c src/parser/valid_map2.c \
 
 CC = cc
 RM = rm -f

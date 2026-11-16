@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floodfill.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akkolito <akkolito@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 16:53:58 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/20 20:57:17 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/11/02 17:58:31 by akkolito         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ int	check_map(t_map *map)
 	result = floodfill(visited, map->start_x, map->start_y);
 	free_lines(visited);
 	if (result)
-		return (ft_putendl_fd("Error\nInvalid map", 2), 1);
+		return (ft_putendl_fd("Error\nInvalied map", 2), 1);
 	return (0);
 }

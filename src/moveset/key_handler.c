@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: akkolito <akkolito@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 16:03:31 by hulescur          #+#    #+#             */
-/*   Updated: 2026/10/22 03:00:29 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/31 02:18:54 by akkolito         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	key_press(int key, void *param)
 		closee(g);
 	if (key == SHIFT)
 		g->key.shift = SPRINT;
+	if (key == KEY_E)
+		doorer(g);
 	return (0);
 }
 

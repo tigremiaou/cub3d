@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubos.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akkolito <akkolito@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 15:59:31 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/23 20:23:35 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/11/02 18:33:00 by akkolito         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
+# define KEY_E 101
 # define SHIFT 65505
+# define DOOR "./textures/horreur_door.xpm"
 # define N 0
 # define S 1
 # define E 2
@@ -61,6 +63,7 @@ typedef struct s_ray
 	int		drawe;
 	int		face;
 	double	dist;
+	int		type;
 }	t_ray;
 
 typedef struct s_map
@@ -73,6 +76,8 @@ typedef struct s_map
 	int		count_color;
 	int		start_x;
 	int		start_y;
+	int		map_w;
+	int		map_h;
 	char	**grid;
 }	t_map;
 
@@ -111,6 +116,7 @@ typedef struct s_key
 typedef struct s_game
 {
 	t_img		textures[4];
+	t_img		door_tex;
 	long		last_frame;
 	int			ceiling;
 	t_img		screen;
@@ -118,13 +124,17 @@ typedef struct s_game
 	t_ray		ray;
 	int			floor;
 	int			map_h;
+	int			door;
 	void		*mlx;
 	void		*win;
+	double		hit_x[WIN_W];
+	double		hit_y[WIN_W];
 	t_map		map;
 	t_key		key;
 }	t_game;
 
 void	put_pixel_img(t_img *img, int x, int y, int color);
+void	ray_line(t_game *g, double hx, double hy);
 void	parser(char *av, int ac, char ***lines);
 int		create_map(char **lines, t_map *map);
 void	init_player(t_player *p, t_map *map);
@@ -135,6 +145,7 @@ void	free_all(char **lines, t_map *map);
 int		parse_color(char *str, int *dest);
 int		handle_id(char *line, t_map *map);
 int		key_release(int key, void *param);
+int		border(char **grid, int i, int j);
 int		is_wall(t_game *g, int x, int y);
 void	check_cub(char *path, char *cub);
 int		key_press(int key, void *param);
@@ -143,15 +154,20 @@ int		match_id(char *line, char *id);
 void	display_texture(t_game *g);
 void	free_lines(char **lines);
 char	**read_lines(char *path);
+void	get_map_size(t_game *g);
 int		init_texture(t_game *g);
-int		valid_map(t_map *map);
+int		door_texture(t_game *g);
+int		check_door(t_map *map);
 int		check_map(t_map *map);
 int		get_hex_rgb(int *rgb);
 void	free_map(t_map *map);
+int		valid_map(t_game *g);
 int		count_h(char **grid);
 t_img	*get_tex(t_game *g);
 int		init_mlx(t_game *g);
 void	destroyy(t_game *g);
+void	doorer(t_game *g);
+void	mapper(t_game *g);
 int		render(t_game *g);
 int		closee(t_game *g);
 void	mover(t_game *g);

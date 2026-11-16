@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nmeunier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akkolito <akkolito@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 16:37:01 by nmeunier          #+#    #+#             */
-/*   Updated: 2026/10/23 19:38:17 by nmeunier         ###   ########.fr       */
+/*   Updated: 2026/11/02 17:56:26 by akkolito         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,22 @@ int	init_texture(t_game *g)
 				&g->textures[i].bpp, &g->textures[i].linel,
 				&g->textures[i].endian);
 	}
+	return (1);
+}
+
+int	door_texture(t_game *g)
+{
+	int	w;
+	int	h;
+
+	g->door_tex.img = mlx_xpm_file_to_image(g->mlx, 
+			DOOR, &w, &h);
+	if (!g->door_tex.img)
+		return (0);
+	g->door_tex.width = w;
+	g->door_tex.height = h;
+	g->door_tex.adr = mlx_get_data_addr(g->door_tex.img,
+			&g->door_tex.bpp, &g->door_tex.linel,
+			&g->door_tex.endian);
 	return (1);
 }

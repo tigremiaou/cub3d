@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akkolitozer <akkolitozer@student.42.fr>    +#+  +:+       +#+        */
+/*   By: akkolito <akkolito@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 02:31:06 by akkolitozer       #+#    #+#             */
-/*   Updated: 2026/10/21 23:39:25 by akkolitozer      ###   ########.fr       */
+/*   Updated: 2026/10/31 02:15:59 by akkolito         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	init_ray(t_ray *r, t_player *p, int x)
 {
 	double	camera;
 
+	r->type = 0;
 	camera = 2 * x / (double)WIN_W - 1;
 	r->dir_x = p->dir_x + p->plane_x * camera;
 	r->dir_y = p->dir_y + p->plane_y * camera;
@@ -47,12 +48,12 @@ static void	init_step(t_ray *r, t_player *p)
 	}
 }
 
-static void	dda(t_ray *r, t_game *g)
+static void	dda(t_ray *r, t_game *g, int x)
 {
 	while (1)
 	{
 		facer(r);
-		if (is_wall(g, r->map_x, r->map_y))
+		if (is_wall(g, r->map_x, r->map_y) > 0)
 			break ;
 	}
 	if (r->face == E || r->face == W)
@@ -61,6 +62,8 @@ static void	dda(t_ray *r, t_game *g)
 		r->dist = r->side_y - r->delta_y;
 	if (r->dist <= 1e-6)
 		r->dist = 1e-6;
+	g->hit_x[x] = g->player.pos_x + r->dir_x * r->dist;
+	g->hit_y[x] = g->player.pos_y + r->dir_y * r->dist;
 }
 
 static void	liner(t_ray *r)
@@ -83,9 +86,10 @@ void	raycaster(t_game *g, t_ray *r)
 	{
 		init_ray(r, &g->player, x);
 		init_step(r, &g->player);
-		dda(r, g);
+		dda(r, g, x);
 		liner(r);
 		display_texture(g);
 		columner(g, r, x);
 	}
+	mapper(g);
 }
